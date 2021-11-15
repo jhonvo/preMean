@@ -42,14 +42,23 @@ function userLanguages (arr){
                 lang += arr[i].languages[j] + ", ";
             }
         }
-        // for (let key in arr[i].interests){
-        //     for (k=0; i < arr[i].interests[key].length; k++){
-        //         int += arr[i].interests[key][k] + ", ";
-        //     }
-        // }
+
+
+        let values = Object.values( arr[i].interests );
+        for( let k = 0; k < values.length; k ++ ){
+            for (let x = 0; x < values[k].length; x++){
+                if (k == values.length-1 && x == values[k].length-1){
+                    int += "and " + values[k][x] + ".";
+                }
+                else {
+                    int += values[k][x] + ", ";
+                }
+                
+            }
+        }
 
         console.log( arr[i].fname + " " + arr[i].lname + " knows " + lang);
-        // console.log( arr[i].fname + " also likes " + int);
+        console.log( arr[i].fname + " also likes " + int);
         }        
     }
 
