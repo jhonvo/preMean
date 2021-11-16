@@ -1,11 +1,10 @@
 function binarySearch (arr, num){
-    let orgindex = Math.trunc((arr.length-1)/2)
-    console.log(arr.length);
-    console.log(orgindex);
-    binaryCheck(arr, num, orgindex);
+    let start = 0;
+    let end = arr.length-1;
+    binaryCheck(arr, num, start, end);
 }
 
-function binaryCheck (arr,num,index){
+function binaryCheckNO(arr,num,index){
     console.log(arr+num+index);
     // let currentindex = index;
     // console.log("This is the index used..." + index);
@@ -31,6 +30,32 @@ function binaryCheck (arr,num,index){
         }
     }
 }
+
+function binaryCheck(arr, num,start,end){
+    let mid =  Math.trunc((start+end)/2);
+    if (arr[mid] == num){
+        console.log("The number was found in index " + index) ;
+    } 
+    if (mid == 0 || mid > arr.length){
+        console.log("-1");
+    }
+    else {
+        if (arr[mid] < num){
+            let newstart = mid+1;
+            binaryCheck(arr, num, newstart, end);
+        }
+        
+        if (arr[mid] > num){
+            let newend = mid-1;
+            binaryCheck(arr, num, start, newend);
+        }
+
+    }
+}
+
+
+
+
 
 // binarySearch([1, 3, 8, 10, 12, 15, 17, 20, 22, 34, 38, 40, 50, 52, 78, 87, 90, 91, 92, 94, 200], 34);
 binarySearch([1, 3, 8, 10, 12, 15, 17, 20, 22, 34, 38, 40, 50, 52, 78, 87, 90, 91, 92, 94], 3);
